@@ -3,6 +3,7 @@ import {
   createStudentHandler,
   getStudentsHandler,
   selectSubjectsHandler,
+  selectSocietyHandler,
 } from "../controller/student.controller";
 import validateRequest from "../middlewares/validateRequest";
 import { createStudentSchema } from "../schema/student.schema";
@@ -26,9 +27,15 @@ userRoutes.post(
 userRoutes.get("/api/students", getStudentsHandler);
 
 /**
- * @route   POST /api/students/:studentId
- * @desc    Gets a students
+ * @route   POST /api/students/add_subjects/:studentId
+ * @desc    Adds subjects for student
  */
-userRoutes.get("/api/students/add_subjects/:studentId", selectSubjectsHandler);
+userRoutes.post("/api/students/add_subjects/:studentId", selectSubjectsHandler);
+
+/**
+ * @route   POST /api/students/:studentId
+ * @desc    Adds societies for student
+ */
+userRoutes.post("/api/students/add_societies/:studentId", selectSocietyHandler);
 
 export default userRoutes;

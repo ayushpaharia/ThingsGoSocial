@@ -1,9 +1,11 @@
 import mongoose from "mongoose";
+import { StudentDocument } from "./student.model";
 
 export interface SocietyDocument extends mongoose.Document {
   name: string;
   type: string;
   details: string;
+  students: Array<StudentDocument["_id"]>;
 }
 
 const SocietySchema = new mongoose.Schema({
